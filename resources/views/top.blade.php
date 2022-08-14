@@ -50,8 +50,14 @@
             <div class="col-3 h2">投稿チーム一覧</div>
             
             <div class="input-group w-25 float-right mr-3 mb-3">
-                <input type="text" class="form-control" placeholder="キーワードを入力">
-                <button class="btn btn-success" type="button" id="button-addon2"><i class="fas fa-search"></i> 検索</button>
+                <div class="d-flex ">
+                    
+                <form  action="{{route('search')}}" method="POST" class="form-inline">
+                 @csrf
+                    <input type="text" class="form-control" placeholder="キーワードを入力" name="search" >
+                    <button class="btn btn-success" type="submit">検索</button>
+                </form>
+                </div>
             </div>
         </div>
         @foreach($teams as $team)
@@ -61,7 +67,7 @@
                 <a href="{{route('team.show',['team'=>$team['id']])}}">
                     <div class="card w-100 ">
                         <div class="card-body  ">
-                            <img src="/images/top.jpg" class="img-fluid col-md-3 float-left" alt="..." style="width:100%" >
+                            <img src="/storage/images/{{$team['img']}}" class="img-fluid col-md-3 float-left" alt="..." style="width:100% ;height:150px;" >
                             <div class="d-flex flex-column">
                                 <span class="h4">{{$team['team']}}</span>
                                 <span class="h1">{{$team['title']}}</span>
