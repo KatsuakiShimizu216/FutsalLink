@@ -30,7 +30,7 @@ class DisplayController extends Controller
         $team =new Team;
         $search=$request->get('search');
         // dd($search);
-        $teams=$team->where('title','LIKE','%'.$search.'%')->orWhere('team','LIKE','%'.$search.'%')->orWhere('level','LIKE','%'.$search.'%')->orWhere('address','LIKE','%'.$search.'%')->get()->toArray();
+        $teams=$team->where('title','LIKE','%'.$search.'%')->orWhere('team','LIKE','%'.$search.'%')->orWhere('level','LIKE','%'.$search.'%')->orWhere('address','LIKE','%'.$search.'%')->orWhere('place','LIKE','%'.$search.'%')->orWhere('comment','LIKE','%'.$search.'%')->get()->toArray();
 
         return view('top',[
             'teams'=>$teams,
